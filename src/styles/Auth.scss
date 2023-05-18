@@ -1,0 +1,43 @@
+.auth {
+  width: 100%;
+  max-height: 100vh;
+  background-image: linear-gradient(to bottom, rgb(135, 206, 250, 0.4), white);
+  z-index: -1;
+  .auth-page {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    .container {
+      text-align: center;
+      width: 100%;
+      form {
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        align-items: center;
+        width: 25%;
+        margin: auto;
+        border: 1px solid #000;
+        border-radius: 20px;
+        box-shadow: 0 0 10px #000;
+        padding: 20px 40px;
+        margin-top: calc((100vh - 272px - 100px) / 2);
+        label {
+          font-size: 16px;
+          text-align: left !important;
+          align-self: flex-start;
+        }
+        input {
+          width: 100%;
+          outline: none;
+          border: 1px solid #aaa;
+          border-radius: 5px;
+          padding: 5px 20px;
+          font-size: 14px;
+          color: black;
+          margin-bottom: 20px;
+        }
+      }
+    }
+  }
+}

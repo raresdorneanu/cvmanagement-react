@@ -1,0 +1,83 @@
+.homepage {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+.hero {
+  width: 100%;
+  position: relative;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 50px 20px;
+  flex-direction: column;
+}
+
+.hero-cover {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
+  background-image: linear-gradient(to bottom, rgb(135, 206, 250, 0.4), white);
+  z-index: -1;
+}
+
+.hero-text__box {
+  width: 80%;
+  z-index: 1;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.hero-title {
+  font-size: 48px;
+  color: #000;
+  font-weight: 400;
+  margin-bottom: 20px;
+}
+
+.hero-text {
+  font-size: 24px;
+  color: #000;
+  font-weight: 400;
+  margin-bottom: 50px;
+  text-shadow: 0px 10px 30px black;
+  line-height: 2rem;
+  text-align: center;
+}
+
+.hero h6 {
+  font-size: 18px;
+  letter-spacing: 1px;
+  font-weight: 400;
+  color: blue;
+  margin-bottom: -5px;
+}
+
+.tabs-container {
+  width: 100%;
+}
+
+#root
+  > div.homepage
+  > div.tabs-container
+  > div.MuiTabs-root.tabs-flex.css-1ujnqem-MuiTabs-root
+  > div
+  > div {
+  justify-content: center;
+}
+
+@media only screen and (max-width: 1300px) {
+  .hero-title {
+    font-size: 32px;
+  }
+
+  .hero-text {
+    font-size: 18px;
+  }
+}
