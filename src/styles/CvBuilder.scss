@@ -23,7 +23,7 @@
   .builder-container {
     .builder {
       padding: 20px;
-      background-color: rgba(0, 0, 0, 0.4);
+      border: 1px solid black;
       border-radius: 10px;
       form {
         .form-flex {
@@ -54,6 +54,7 @@
             border: none;
             border-radius: 10px;
             margin-bottom: 10px;
+            border: 1px solid black;
           }
           .builder-photo {
             position: relative;
@@ -153,6 +154,7 @@
             border: none;
             border-radius: 10px;
             margin-bottom: 10px;
+            border: 1px solid black;
           }
         }
       }

@@ -193,6 +193,7 @@ const CvBuilder = () => {
                   <input
                     type="text"
                     id="firstName"
+                    placeholder="Enter first name..."
                     value={firstName}
                     onChange={(e) => setFirstName(e.target.value)}
                   />
@@ -202,6 +203,7 @@ const CvBuilder = () => {
                   <input
                     type="text"
                     id="lastName"
+                    placeholder="Enter last name..."
                     value={lastName}
                     onChange={(e) => setLastName(e.target.value)}
                   />
@@ -211,15 +213,17 @@ const CvBuilder = () => {
                   <input
                     type="text"
                     id="role"
+                    placeholder="Add your role..."
                     value={role}
                     onChange={(e) => setRole(e.target.value)}
                   />
                 </div>
                 <div className="bld builder-desc">
                   <label htmlFor="desc">Description:</label>
-                  <input
+                  <textarea
                     type="text"
                     id="desc"
+                    placeholder="Add description..."
                     value={candDescription}
                     onChange={(e) => setCandDescription(e.target.value)}
                   />
@@ -229,6 +233,7 @@ const CvBuilder = () => {
                   <input
                     type="text"
                     id="phone"
+                    placeholder="Your phone..."
                     value={phone}
                     onChange={(e) => setPhone(e.target.value)}
                   />
@@ -237,6 +242,7 @@ const CvBuilder = () => {
                   <label htmlFor="email">Email:</label>
                   <input
                     type="email"
+                    placeholder="Your email..."
                     id="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
@@ -246,6 +252,7 @@ const CvBuilder = () => {
                   <label htmlFor="address">Address:</label>
                   <input
                     type="text"
+                    placeholder="Your address..."
                     id="address"
                     value={address}
                     onChange={(e) => setAddress(e.target.value)}
@@ -255,6 +262,7 @@ const CvBuilder = () => {
                   <label htmlFor="languages">Lang:</label>
                   <input
                     type="text"
+                    placeholder="Add languages..."
                     id="languages"
                     value={languages}
                     onChange={(e) => setLanguages(e.target.value)}
@@ -264,6 +272,7 @@ const CvBuilder = () => {
                   <label htmlFor="gender">Gender:</label>
                   <input
                     type="text"
+                    placeholder="Add your gender..."
                     id="gender"
                     value={gender}
                     onChange={(e) => setGender(e.target.value)}
@@ -287,6 +296,7 @@ const CvBuilder = () => {
                       <label>Experience {index + 1}: </label>
                       <textarea
                         type="text"
+                        placeholder="Add experience..."
                         value={value}
                         onChange={(e) =>
                           handleNewExperience(index, e.target.value)
@@ -315,6 +325,7 @@ const CvBuilder = () => {
                       <label>Education {index + 1}: </label>
                       <input
                         type="text"
+                        placeholder="Add education..."
                         value={value}
                         onChange={(e) =>
                           handleNewEducation(index, e.target.value)
@@ -343,6 +354,7 @@ const CvBuilder = () => {
                       <label>Skill {index + 1}: </label>
                       <input
                         type="text"
+                        placeholder="Add skill..."
                         value={value}
                         onChange={(e) => handleNewSkill(index, e.target.value)}
                       />
@@ -367,8 +379,9 @@ const CvBuilder = () => {
                   {portfolio.map((value, index) => (
                     <div className="portf-item" key={index}>
                       <label> My Work {index + 1}: </label>
-                      <textarea
+                      <input
                         type="text"
+                        placeholder="Link should start with http://"
                         value={value}
                         onChange={(e) => handleNewPortf(index, e.target.value)}
                       />
