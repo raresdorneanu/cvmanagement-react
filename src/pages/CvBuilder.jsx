@@ -54,8 +54,6 @@ const CvBuilder = () => {
 
   const onFileChangeHandler = (e) => {
     e.preventDefault();
-    // setImage(e.target.files[0]);
-    // console.log(e.target.files[0]);
     console.log(e.target.files[0].name);
     setImage(e.target.files[0].name);
     const formData = new FormData();
@@ -66,7 +64,6 @@ const CvBuilder = () => {
     }).then((res) => {
       if (res.ok) {
         console.log(image);
-        // console.log(res.data);
         alert("File uploaded successfully.");
       }
     });
@@ -167,275 +164,261 @@ const CvBuilder = () => {
         ))}
       </div>
       <div className="builder-container">
-        <div
-          className="builder"
-          style={{
-            backgroundColor: templates?.find(
-              (template) => template.id === selectedTemplate
-            )?.background,
-            color:
-              template &&
-              (template === "#323b4c" ||
-                template === "#3C4240" ||
-                template === "#6D493B" ||
-                template === "#8D4B55" ||
-                template === "#6B9999")
-                ? "#fff"
-                : "#000",
-          }}
-        >
-          <h2>Add Your Details</h2>
-          <form onSubmit={handleAddCv}>
-            <div className="form-flex">
-              <div className="builder-form-left">
-                <div className="bld builder-fn">
-                  <label htmlFor="firstName">First Name:</label>
-                  <input
-                    type="text"
-                    id="firstName"
-                    placeholder="Enter first name..."
-                    value={firstName}
-                    onChange={(e) => setFirstName(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-ln">
-                  <label htmlFor="lastName">Last Name:</label>
-                  <input
-                    type="text"
-                    id="lastName"
-                    placeholder="Enter last name..."
-                    value={lastName}
-                    onChange={(e) => setLastName(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-role">
-                  <label htmlFor="role">Role:</label>
-                  <input
-                    type="text"
-                    id="role"
-                    placeholder="Add your role..."
-                    value={role}
-                    onChange={(e) => setRole(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-desc">
-                  <label htmlFor="desc">Description:</label>
-                  <textarea
-                    type="text"
-                    id="desc"
-                    placeholder="Add description..."
-                    value={candDescription}
-                    onChange={(e) => setCandDescription(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-phone">
-                  <label htmlFor="phone">Phone:</label>
-                  <input
-                    type="text"
-                    id="phone"
-                    placeholder="Your phone..."
-                    value={phone}
-                    onChange={(e) => setPhone(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-email">
-                  <label htmlFor="email">Email:</label>
-                  <input
-                    type="email"
-                    placeholder="Your email..."
-                    id="email"
-                    value={email}
-                    onChange={(e) => setEmail(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-address">
-                  <label htmlFor="address">Address:</label>
-                  <input
-                    type="text"
-                    placeholder="Your address..."
-                    id="address"
-                    value={address}
-                    onChange={(e) => setAddress(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-lang">
-                  <label htmlFor="languages">Lang:</label>
-                  <input
-                    type="text"
-                    placeholder="Add languages..."
-                    id="languages"
-                    value={languages}
-                    onChange={(e) => setLanguages(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-gender">
-                  <label htmlFor="gender">Gender:</label>
-                  <input
-                    type="text"
-                    placeholder="Add your gender..."
-                    id="gender"
-                    value={gender}
-                    onChange={(e) => setGender(e.target.value)}
-                  />
-                </div>
-                <div className="bld builder-photo">
-                  <label>Photo:</label>
-                  <input
-                    type="file"
-                    class="file-input"
-                    name="file"
-                    onChange={onFileChangeHandler}
-                  />
-                </div>
-              </div>
-              <div className="builder-form-right">
-                <div className="bld builder-exp">
-                  <label htmlFor="experience">Experience:</label>
-                  {experience.map((value, index) => (
-                    <div className="exp-item" key={index}>
-                      <label>Experience {index + 1}: </label>
-                      <textarea
-                        type="text"
-                        placeholder="Add experience..."
-                        value={value}
-                        onChange={(e) =>
-                          handleNewExperience(index, e.target.value)
-                        }
-                      />
-                      <button
-                        type="button"
-                        className="delete-btn"
-                        onClick={() => handleDeleteExperience(index)}
-                      >
-                        X
-                      </button>
-                    </div>
-                  ))}
-                  <Button
-                    className=" add-btn builder-add-exp"
-                    onClick={addExperience}
-                  >
-                    Add Experience
-                  </Button>
-                </div>
-                <div className="bld builder-ed">
-                  <label htmlFor="education">Education:</label>
-                  {education.map((value, index) => (
-                    <div className="ed-item" key={index}>
-                      <label>Education {index + 1}: </label>
+        {selectedTemplate ? (
+          <div
+            className="builder"
+            style={{
+              backgroundColor: templates?.find(
+                (template) => template.id === selectedTemplate
+              )?.background,
+              color:
+                template &&
+                (template === "#323b4c" ||
+                  template === "#3C4240" ||
+                  template === "#6D493B" ||
+                  template === "#8D4B55" ||
+                  template === "#6B9999")
+                  ? "#fff"
+                  : "#000",
+            }}
+          >
+            <h2>Add Your Details</h2>
+            <form onSubmit={handleAddCv}>
+              <div className="form-flex">
+                <div className="builder-form-left">
+                  <div className="up-div">
+                    <div className="bld builder-fn">
+                      <label htmlFor="firstName">First Name:</label>
                       <input
                         type="text"
-                        placeholder="Add education..."
-                        value={value}
-                        onChange={(e) =>
-                          handleNewEducation(index, e.target.value)
-                        }
+                        id="firstName"
+                        placeholder="Enter first name..."
+                        value={firstName}
+                        onChange={(e) => setFirstName(e.target.value)}
                       />
-                      <button
-                        type="button"
-                        className="delete-btn"
-                        onClick={() => handleDeleteEducation(index)}
-                      >
-                        X
-                      </button>
                     </div>
-                  ))}
-                  <Button
-                    className="add-btn builder-add-ed"
-                    onClick={addEducation}
-                  >
-                    Add Education
-                  </Button>
-                </div>
-                <div className="bld builder-skills">
-                  <label htmlFor="skills">Skills:</label>
-                  {skills.map((value, index) => (
-                    <div className="skill-item" key={index}>
-                      <label>Skill {index + 1}: </label>
+                    <div className="bld builder-ln">
+                      <label htmlFor="lastName">Last Name:</label>
                       <input
                         type="text"
-                        placeholder="Add skill..."
-                        value={value}
-                        onChange={(e) => handleNewSkill(index, e.target.value)}
+                        id="lastName"
+                        placeholder="Enter last name..."
+                        value={lastName}
+                        onChange={(e) => setLastName(e.target.value)}
                       />
-                      <button
-                        type="button"
-                        className="delete-btn"
-                        onClick={() => handleDeleteSkill(index)}
-                      >
-                        X
-                      </button>
                     </div>
-                  ))}
-                  <Button
-                    className="add-btn builder-add-skill"
-                    onClick={addSkill}
-                  >
-                    Add Skill
-                  </Button>
-                </div>
-                <div className="bld builder-portf">
-                  <label htmlFor="portfolio">Portfolio:</label>
-                  {portfolio.map((value, index) => (
-                    <div className="portf-item" key={index}>
-                      <label> My Work {index + 1}: </label>
+                    <div className="bld builder-role">
+                      <label htmlFor="role">Role:</label>
                       <input
                         type="text"
-                        placeholder="Link should start with http://"
-                        value={value}
-                        onChange={(e) => handleNewPortf(index, e.target.value)}
+                        id="role"
+                        placeholder="Add your role..."
+                        value={role}
+                        onChange={(e) => setRole(e.target.value)}
                       />
-                      <button
-                        type="button"
-                        className="delete-btn"
-                        onClick={() => handleDeletePortf(index)}
-                      >
-                        X
-                      </button>
                     </div>
-                  ))}
-                  <Button
-                    className="add-btn builder-add-portf"
-                    onClick={addPortf}
-                  >
-                    Add Portfolio
-                  </Button>
-                </div>
-              </div>
-            </div>
-            <div className="builder-submit-button">
-              <button className="add-btn" type="submit">
-                Add CV
-              </button>
-            </div>
-          </form>
-        </div>
-      </div>
-      {/* <Modal open={open} onClose={() => setOpen(false)}>
-        <Box
-          sx={{
-            bgcolor: templates?.find(
-              (template) => template.id === selectedTemplate
-            )?.background,
-          }}
-          style={{
-            backgroundColor: template?.background,
-            color:
-              template &&
-              (template === "#323b4c" ||
-                template === "#3C4240" ||
-                template === "#6D493B" ||
-                template === "#8D4B55" ||
-                template === "#6B9999")
-                ? "#fff"
-                : "#000",
-            fontWeight: "bold",
-          }}
-          className="modal"
-        >
 
-        </Box>
-      </Modal> */}
+                    <div className="bld builder-phone">
+                      <label htmlFor="phone">Phone:</label>
+                      <input
+                        type="text"
+                        id="phone"
+                        placeholder="Your phone..."
+                        value={phone}
+                        onChange={(e) => setPhone(e.target.value)}
+                      />
+                    </div>
+                    <div className="bld builder-email">
+                      <label htmlFor="email">Email:</label>
+                      <input
+                        type="email"
+                        placeholder="Your email..."
+                        id="email"
+                        value={email}
+                        onChange={(e) => setEmail(e.target.value)}
+                      />
+                    </div>
+                    <div className="bld builder-address">
+                      <label htmlFor="address">Address:</label>
+                      <input
+                        type="text"
+                        placeholder="Your address..."
+                        id="address"
+                        value={address}
+                        onChange={(e) => setAddress(e.target.value)}
+                      />
+                    </div>
+                    <div className="bld builder-lang">
+                      <label htmlFor="languages">Lang:</label>
+                      <input
+                        type="text"
+                        placeholder="Add languages..."
+                        id="languages"
+                        value={languages}
+                        onChange={(e) => setLanguages(e.target.value)}
+                      />
+                    </div>
+                    <div className="bld builder-gender">
+                      <label htmlFor="gender">Gender:</label>
+                      <input
+                        type="text"
+                        placeholder="Add your gender..."
+                        id="gender"
+                        value={gender}
+                        onChange={(e) => setGender(e.target.value)}
+                      />
+                    </div>
+                    <div className="bld builder-photo">
+                      <label>Photo:</label>
+                      <input
+                        type="file"
+                        class="file-input"
+                        name="file"
+                        onChange={onFileChangeHandler}
+                      />
+                    </div>
+                  </div>
+                  <div className="bld builder-desc">
+                    <label htmlFor="desc">Description:</label>
+                    <textarea
+                      type="text"
+                      id="desc"
+                      placeholder="Add description..."
+                      value={candDescription}
+                      onChange={(e) => setCandDescription(e.target.value)}
+                    />
+                  </div>
+                  <div className="exp-down">
+                    <div className="exp-down-left">
+                      <div className="bld builder-exp">
+                        <label htmlFor="experience">Experience:</label>
+                        {experience.map((value, index) => (
+                          <div className="exp-item" key={index}>
+                            <textarea
+                              type="text"
+                              placeholder="Add experience..."
+                              value={value}
+                              onChange={(e) =>
+                                handleNewExperience(index, e.target.value)
+                              }
+                            />
+                            <button
+                              type="button"
+                              className="delete-btn"
+                              onClick={() => handleDeleteExperience(index)}
+                            >
+                              X
+                            </button>
+                          </div>
+                        ))}
+                        <Button
+                          className=" add-btn builder-add-exp"
+                          onClick={addExperience}
+                        >
+                          Add Experience
+                        </Button>
+                      </div>
+                      <div className="bld builder-ed">
+                        <label htmlFor="education">Education:</label>
+                        {education.map((value, index) => (
+                          <div className="ed-item" key={index}>
+                            <input
+                              type="text"
+                              placeholder="Add education..."
+                              value={value}
+                              onChange={(e) =>
+                                handleNewEducation(index, e.target.value)
+                              }
+                            />
+                            <button
+                              type="button"
+                              className="delete-btn"
+                              onClick={() => handleDeleteEducation(index)}
+                            >
+                              X
+                            </button>
+                          </div>
+                        ))}
+                        <Button
+                          className="add-btn builder-add-ed"
+                          onClick={addEducation}
+                        >
+                          Add Education
+                        </Button>
+                      </div>
+                    </div>
+
+                    <div className="exp-down-right">
+                      <div className="bld builder-skills">
+                        <label htmlFor="skills">Skills:</label>
+                        {skills.map((value, index) => (
+                          <div className="skill-item" key={index}>
+                            <input
+                              type="text"
+                              placeholder="Add skill..."
+                              value={value}
+                              onChange={(e) =>
+                                handleNewSkill(index, e.target.value)
+                              }
+                            />
+                            <button
+                              type="button"
+                              className="delete-btn"
+                              onClick={() => handleDeleteSkill(index)}
+                            >
+                              X
+                            </button>
+                          </div>
+                        ))}
+                        <Button
+                          className="add-btn builder-add-skill"
+                          onClick={addSkill}
+                        >
+                          Add Skill
+                        </Button>
+                      </div>
+                      <div className="bld builder-portf">
+                        <label htmlFor="portfolio">Portfolio:</label>
+                        {portfolio.map((value, index) => (
+                          <div className="portf-item" key={index}>
+                            <input
+                              type="text"
+                              placeholder="Link should start with http://"
+                              value={value}
+                              onChange={(e) =>
+                                handleNewPortf(index, e.target.value)
+                              }
+                            />
+                            <button
+                              type="button"
+                              className="delete-btn"
+                              onClick={() => handleDeletePortf(index)}
+                            >
+                              X
+                            </button>
+                          </div>
+                        ))}
+                        <Button
+                          className="add-btn builder-add-portf"
+                          onClick={addPortf}
+                        >
+                          Add Portfolio
+                        </Button>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <div className="builder-submit-button">
+                <button className="add-btn" type="submit">
+                  Add CV
+                </button>
+              </div>
+            </form>
+          </div>
+        ) : null}
+      </div>
     </div>
   );
 };

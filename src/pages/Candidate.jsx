@@ -68,9 +68,7 @@ export default function Candidate(props) {
     props.candidates.map((cand) => {
       console.log(cand.image);
       import(`../images/uploads/${cand.image}`).then((image) => {
-        // you can store the imported image in a variable
         const importedImage = image.default;
-        // do something with the imported image
         console.log(importedImage);
         setImageSrc(importedImage);
         console.log(imageSrc);

@@ -118,10 +118,6 @@ const CvDetail = () => {
     setCandDescription(e.target.value);
   };
 
-  // const handleExperienceChange = (e) => {
-  //   setExperience(e.target.value);
-  // };
-
   const handlePhoneChange = (e) => {
     setPhone(e.target.value);
   };
@@ -140,9 +136,6 @@ const CvDetail = () => {
     }
   };
 
-  // const handleSkillsChange = (e) => {
-  //   setSkills(e.target.value);
-  // };
   const handlePortfolioChange = (e) => {
     if (e && e.target && e.target.value) {
       setPortfolio([...portfolio, e.target.value]);
@@ -160,14 +153,6 @@ const CvDetail = () => {
     setTemplate(newBackground);
   };
 
-  // const handleImageChange = (event) => {
-  //   onFileChangeHandler(event);
-  // };
-  //   const handleDeleteExperience = (index) => {
-  //     setExperiences((prevExperiences) =>
-  //       prevExperiences.filter((_, i) => i !== index)
-  //     );
-  //   };
   const onFileChangeHandler = async (e) => {
     e.preventDefault(); // prevent default browser action
     e.stopPropagation();
@@ -182,15 +167,11 @@ const CvDetail = () => {
     }).then((res) => {
       if (res.ok) {
         setImage(e.target.files[0].name);
-        // console.log(res.data);
-        // alert("File uploaded successfully.");
       }
     });
   };
 
   const handleUpdate = () => (e) => {
-    // const experienceString = experiences.join("|");
-    // const skillsString = skills.join("|");
     e.preventDefault();
     e.stopPropagation();
     fetch(`http://localhost:8080/candidate/${id}`, {
@@ -454,7 +435,7 @@ const CvDetail = () => {
           <form onSubmit={handleUpdate(id)}>
             <div className="form-flex">
               <div className="form-flex-left">
-                <div className="up-fn">
+                <div className="upld up-fn">
                   <label htmlFor="firstname">First Name:</label>
                   <input
                     type="text"
@@ -463,7 +444,7 @@ const CvDetail = () => {
                     onChange={handleFirstNameChange}
                   />
                 </div>
-                <div className="up-ln">
+                <div className="upld up-ln">
                   <label htmlFor="lastname">Last Name:</label>
                   <input
                     type="text"
@@ -472,7 +453,7 @@ const CvDetail = () => {
                     onChange={handleLastNameChange}
                   />
                 </div>
-                <div className="up-role">
+                <div className="upld up-role">
                   <label htmlFor="role">Role:</label>
                   <input
                     type="text"
@@ -481,16 +462,16 @@ const CvDetail = () => {
                     onChange={handleRoleChange}
                   />
                 </div>
-                <div className="up-desc">
+                <div className="upld up-desc">
                   <label htmlFor="desc">Description:</label>
-                  <input
+                  <textarea
                     type="text"
                     id="desc"
                     value={candDescription ? candDescription : ""}
                     onChange={handleCandDescriptionChange}
                   />
                 </div>
-                <div className="up-phone">
+                <div className="upld up-phone">
                   <label htmlFor="phone">Phone:</label>
                   <input
                     type="text"
@@ -499,7 +480,7 @@ const CvDetail = () => {
                     onChange={handlePhoneChange}
                   />
                 </div>
-                <div className="up-email">
+                <div className="upld up-email">
                   <label htmlFor="email">Email:</label>
                   <input
                     type="email"
@@ -508,7 +489,7 @@ const CvDetail = () => {
                     onChange={handleEmailChange}
                   />
                 </div>
-                <div className="up-address">
+                <div className="upld up-address">
                   <label htmlFor="address">Address:</label>
                   <input
                     type="text"
@@ -517,7 +498,7 @@ const CvDetail = () => {
                     onChange={handleAddressChange}
                   />
                 </div>
-                <div className="up-lang">
+                <div className="upld up-lang">
                   <label htmlFor="languages">Lang:</label>
                   <input
                     type="text"
@@ -526,7 +507,7 @@ const CvDetail = () => {
                     onChange={handleLangChange}
                   />
                 </div>
-                <div className="up-gender">
+                <div className="upld up-gender">
                   <label htmlFor="gender">Gender:</label>
                   <input
                     type="text"
@@ -535,127 +516,165 @@ const CvDetail = () => {
                     onChange={handleGenderChange}
                   />
                 </div>
-                <div className="up-photo">
+                <div className="upld up-photo">
                   <label>Photo</label>
                   <input
                     type="file"
-                    className="form-control"
+                    className="file-input"
                     name="file"
                     onChange={onFileChangeHandler}
                   />
                 </div>
-              </div>
-              <div className="form-flex-right">
-                <div className="up-exp">
+                <div className="upld up-exp">
                   <label htmlFor="experience">Experience:</label>
                   {experience?.length === 0 ? (
                     <div>
-                      <button type="button" onClick={addExperience}>
+                      <button
+                        className="up-add"
+                        type="button"
+                        onClick={addExperience}
+                      >
                         Add Experience
                       </button>
                     </div>
                   ) : (
-                    experience?.map((exp, index) => (
-                      <div key={index}>
-                        <label>Experience {index + 1}: </label>
-                        <textarea
-                          type="text"
-                          id="experience"
-                          value={exp ? exp : ""}
-                          onChange={(e) =>
-                            handleNewExperience(index, e.target.value)
-                          }
-                        />
-                        <button type="button" onClick={addExperience}>
-                          Add Experience
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteExperience(index)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    ))
+                    <>
+                      {experience?.map((exp, index) => (
+                        <div className="upld-list-item" key={index}>
+                          <label>Experience {index + 1}: </label>
+                          <textarea
+                            type="text"
+                            id="experience"
+                            value={exp ? exp : ""}
+                            onChange={(e) =>
+                              handleNewExperience(index, e.target.value)
+                            }
+                          />
+
+                          <button
+                            type="button"
+                            className="upload-dlt-btn"
+                            onClick={() => handleDeleteExperience(index)}
+                          >
+                            X
+                          </button>
+                        </div>
+                      ))}
+                      <button
+                        className="up-add"
+                        type="button"
+                        onClick={addExperience}
+                      >
+                        Add Experience
+                      </button>
+                    </>
                   )}
                 </div>
-                <div className="up-ed">
+                <div className="upld up-ed">
                   <label htmlFor="edu">Education:</label>
                   {education?.length === 0 ? (
                     <div>
-                      <button type="button" onClick={addEducation}>
+                      <button
+                        className="up-add"
+                        type="button"
+                        onClick={addEducation}
+                      >
                         Add Education
                       </button>
                     </div>
                   ) : (
-                    education?.map((edu, index) => (
-                      <div key={index}>
-                        <label>Education {index + 1}: </label>
-                        <input
-                          type="text"
-                          id="edu"
-                          value={edu ? edu : ""}
-                          onChange={(e) =>
-                            handleNewEducation(index, e.target.value)
-                          }
-                        />
-                        <button type="button" onClick={addEducation}>
-                          Add Education
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteEducation(index)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    ))
+                    <>
+                      {education?.map((edu, index) => (
+                        <div className="upld-list-item" key={index}>
+                          <label>Education {index + 1}: </label>
+                          <input
+                            type="text"
+                            id="edu"
+                            value={edu ? edu : ""}
+                            onChange={(e) =>
+                              handleNewEducation(index, e.target.value)
+                            }
+                          />
+
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteEducation(index)}
+                            className="upload-dlt-btn"
+                          >
+                            X
+                          </button>
+                        </div>
+                      ))}
+                      <button
+                        className="up-add"
+                        type="button"
+                        onClick={addEducation}
+                      >
+                        Add Education
+                      </button>
+                    </>
                   )}
                 </div>
-                <div className="up-skills">
+                <div className="upld up-skills">
                   <label htmlFor="skills">Skills:</label>
                   {skills?.length === 0 ? (
                     <div>
-                      <button type="button" onClick={addSkill}>
+                      <button
+                        className="up-add"
+                        type="button"
+                        onClick={addSkill}
+                      >
                         Add Skills
                       </button>
                     </div>
                   ) : (
-                    skills?.map((skill, index) => (
-                      <div key={index}>
-                        <label>Skill {index + 1}: </label>
-                        <input
-                          type="text"
-                          id="skills"
-                          value={skill ? skill : ""}
-                          onChange={(e) =>
-                            handleNewSkill(index, e.target.value)
-                          }
-                        />
-                        <button type="button" onClick={addSkill}>
-                          Add Education
-                        </button>
-                        <button
-                          type="button"
-                          onClick={() => handleDeleteSkill(index)}
-                        >
-                          Delete
-                        </button>
-                      </div>
-                    ))
+                    <>
+                      {skills?.map((skill, index) => (
+                        <div className="upld-list-item" key={index}>
+                          <label>Skill {index + 1}: </label>
+                          <input
+                            type="text"
+                            id="skills"
+                            value={skill ? skill : ""}
+                            onChange={(e) =>
+                              handleNewSkill(index, e.target.value)
+                            }
+                          />
+
+                          <button
+                            type="button"
+                            onClick={() => handleDeleteSkill(index)}
+                            className="upload-dlt-btn"
+                          >
+                            X
+                          </button>
+                        </div>
+                      ))}{" "}
+                      <button
+                        className="up-add"
+                        type="button"
+                        onClick={addSkill}
+                      >
+                        Add Skill
+                      </button>
+                    </>
                   )}
                 </div>
-                <div className="up-portf">
+                <div className="upld up-portf">
                   <label htmlFor="portf">Portfolio:</label>
                   {portfolio?.length === 0 ? (
                     <div>
-                      <button type="button" onClick={addPortf}>
+                      <button
+                        className="up-add"
+                        type="button"
+                        onClick={addPortf}
+                      >
                         Add Portfolio
                       </button>
                     </div>
                   ) : (
                     portfolio?.map((portf, index) => (
-                      <div key={index}>
+                      <div className="upld-list-item" key={index}>
                         <label>Portfolio {index + 1}: </label>
                         <input
                           type="text"
@@ -665,20 +684,25 @@ const CvDetail = () => {
                             handleNewPortf(index, e.target.value)
                           }
                         />
-                        <button type="button" onClick={addPortf}>
+                        <button
+                          className="up-add"
+                          type="button"
+                          onClick={addPortf}
+                        >
                           Add Portfolio
                         </button>
                         <button
                           type="button"
                           onClick={() => handleDeletePortf(index)}
+                          className="upload-dlt-btn"
                         >
-                          Delete
+                          X
                         </button>
                       </div>
                     ))
                   )}
                 </div>
-                <div className="up-template">
+                <div className="upld up-template">
                   <label htmlFor="template">Template:</label>
                   <div className="colors-cont">
                     {templates.map((temp, index) => (
@@ -697,8 +721,10 @@ const CvDetail = () => {
                     ))}
                   </div>
                 </div>
+                <button className="update-btn" type="submit">
+                  Update
+                </button>
               </div>
-              <button type="submit">Update</button>
             </div>
           </form>
           <button
