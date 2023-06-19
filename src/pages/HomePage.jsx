@@ -16,10 +16,10 @@ const HomePage = (props) => {
   const tabs = [
     { label: "Get Started", component: <Tab1 /> },
     {
-      label: "Tips & Templates",
+      label: "Templates",
       component: <Tab2 />,
     },
-    { label: "Resume Tips & Tricks", component: <Tab3 /> },
+    { label: "Tips & Tricks", component: <Tab3 /> },
   ];
   return (
     <div className="homepage">

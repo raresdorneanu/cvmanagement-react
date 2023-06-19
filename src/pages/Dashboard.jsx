@@ -32,24 +32,6 @@ const Dashboard = () => {
     console.log(candidates);
   }, [candidates]);
 
-  // onFileChangeHandler = (e) => {
-  //   e.preventDefault();
-  //   this.setState({
-  //     selectedFile: e.target.files[0],
-  //   });
-  //   const formData = new FormData();
-  //   formData.append("file", this.state.selectedFile);
-  //   fetch("http://localhost:8080/upload", {
-  //     method: "post",
-  //     body: formData,
-  //   }).then((res) => {
-  //     if (res.ok) {
-  //       console.log(res.data);
-  //       alert("File uploaded successfully.");
-  //     }
-  //   });
-  // };
-
   return (
     <div className="dash-container">
       <div className="dash-flex">
@@ -67,7 +49,9 @@ const Dashboard = () => {
             </div>
           </div>
           <div className="dash-buttons">
-            <Button onClick={handleLogout}>Logout</Button>
+            <Button className="logout-btn" onClick={handleLogout}>
+              Logout
+            </Button>
             <Button onClick={navigateToBuilder}>Build</Button>
           </div>
         </div>

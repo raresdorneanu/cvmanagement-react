@@ -4,15 +4,26 @@
     display: flex;
     justify-content: space-around;
     .dash-flex-left {
-      padding-top: 20px;
-      padding-left: 10px;
+      padding: 50px 20px;
       width: 20%;
       background-color: rgb(135, 206, 250, 0.4);
-      height: calc(100vh - 40px);
       display: flex;
       flex-direction: column;
-      justify-content: space-between;
       align-items: center;
+      padding-bottom: 100%;
+      .dash-info {
+        h1 {
+          text-align: center;
+          margin-bottom: 50px;
+          font-size: 32px;
+        }
+      }
+      .dash-buttons {
+        padding: 50px 0;
+        .logout-btn {
+          margin-right: 20px;
+        }
+      }
     }
     .dash-flex-right {
       padding-top: 20px;

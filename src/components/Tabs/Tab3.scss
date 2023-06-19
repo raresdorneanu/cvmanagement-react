@@ -1,0 +1,25 @@
+.tab-card-column {
+  ol {
+    padding-left: 10px;
+    h3 {
+      margin: 20px 0;
+    }
+
+    li {
+      text-align: left;
+    }
+  }
+
+  ul {
+    padding-left: 25px;
+    li {
+      text-align: left;
+      margin-bottom: 10px;
+      line-height: 30px;
+      list-style: disc;
+      &:last-child {
+        margin-bottom: 0;
+      }
+    }
+  }
+}

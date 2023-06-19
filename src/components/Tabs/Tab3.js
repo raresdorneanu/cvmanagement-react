@@ -1,15 +1,15 @@
 import picture1tab3 from "../../images/resume1.png";
 import picture2tab3 from "../../images/resume2.png";
-import "./Tab1.scss";
+import "./Tab3.scss";
 const Tab3 = () => {
   return (
     <div className="tab-container">
       <div className="tab-wrapper">
         <div className="tab-card-column">
-          <h3>Tips & Tricks</h3>
+          <h2>Tips & Tricks</h2>
           <ol>
             <li>
-              Headline Writing:
+              <h3>Headline Writing:</h3>
               <ul>
                 <li>
                   Use action verbs: Start the headline with a strong action verb
@@ -26,7 +26,7 @@ const Tab3 = () => {
               </ul>
             </li>
             <li>
-              Accomplishment Showcasing:
+              <h3>Accomplishment Showcasing:</h3>
               <ul>
                 <li>
                   Use bullet points: Use bullet points to highlight specific
@@ -47,7 +47,7 @@ const Tab3 = () => {
               </ul>
             </li>
             <li>
-              Industry-Specific Tailoring:
+              <h3>Industry-Specific Tailoring:</h3>
               <ul>
                 <li>
                   Use relevant keywords: Use relevant keywords from the job
@@ -67,7 +67,7 @@ const Tab3 = () => {
               </ul>
             </li>
             <li>
-              Formatting and Design:
+              <h3>Formatting and Design:</h3>
               <ul>
                 <li>
                   Use a clean and professional layout: Use a clean and
@@ -86,7 +86,7 @@ const Tab3 = () => {
               </ul>
             </li>
             <li>
-              Customizing for Each Application:
+              <h3>Customizing for Each Application:</h3>
               <ul>
                 <li>
                   Tailor the CV to the job requirements: Review the job

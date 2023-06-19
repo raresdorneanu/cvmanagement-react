@@ -1,6 +1,6 @@
 .builder-page-container {
   width: 80%;
-  margin: 0 auto;
+  margin: 20px auto;
   h2 {
     text-align: center;
     margin-bottom: 10px;
@@ -31,11 +31,16 @@
         }
         .builder-form-left {
           display: flex;
-          flex-wrap: wrap;
-          width: 50%;
-          max-height: 400px;
+          flex-direction: column;
+          width: 100%;
+          .up-div {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+          }
           .bld {
             padding: 5px;
+            text-align: center;
           }
           label {
             text-align: center;
@@ -89,73 +94,70 @@
             }
           }
         }
-        .builder-form-right {
-          width: 50%;
-          display: flex;
-          flex-wrap: wrap;
-          text-align: center;
-          .builder-exp {
-            width: 100%;
-            .exp-item {
-              position: relative;
-              label {
-                font-size: 16px;
-              }
-              .delete-btn {
-                position: absolute;
-              }
-            }
-          }
-          .builder-ed {
-            width: 100%;
-            .ed-item {
-              position: relative;
-              .delete-btn {
-                position: absolute;
-              }
-            }
-          }
-          .builder-skills {
-            width: 100%;
-            .skill-item {
-              position: relative;
-              .delete-btn {
-                position: absolute;
-              }
-            }
-          }
-          .builder-portf {
-            width: 100%;
-            .portf-item {
-              position: relative;
-              .delete-btn {
-                position: absolute;
-              }
-            }
-          }
 
-          .bld {
-            padding: 5px;
+        .builder-exp {
+          width: 100%;
+          .exp-item {
+            position: relative;
+            label {
+              font-size: 16px;
+            }
+            .delete-btn {
+              position: absolute;
+              top: 0;
+              right: 0;
+            }
           }
-          label {
-            text-align: center;
-            font-size: 18px;
-            font-weight: 400;
-            letter-spacing: 1px;
-            display: block;
-            margin-bottom: 10px;
+        }
+        .builder-ed {
+          width: 100%;
+          .ed-item {
+            position: relative;
+            .delete-btn {
+              position: absolute;
+            }
           }
-          input {
-            padding: 5px 20px;
-            width: 100%;
-            min-width: 150px;
-            font-size: 16px;
-            outline: none;
-            border: none;
-            border-radius: 10px;
-            margin-bottom: 10px;
-            border: 1px solid black;
+        }
+        .builder-skills {
+          width: 100%;
+          .skill-item {
+            position: relative;
+            .delete-btn {
+              position: absolute;
+            }
           }
+        }
+        .builder-portf {
+          width: 100%;
+          .portf-item {
+            position: relative;
+            .delete-btn {
+              position: absolute;
+            }
+          }
+        }
+
+        .bld {
+          padding: 5px;
+        }
+        label {
+          text-align: center;
+          font-size: 18px;
+          font-weight: 400;
+          letter-spacing: 1px;
+          display: block;
+          margin-bottom: 10px;
+        }
+        input {
+          padding: 5px 20px;
+          width: 100%;
+          min-width: 150px;
+          font-size: 16px;
+          outline: none;
+          border: none;
+          border-radius: 10px;
+          margin-bottom: 10px;
+          border: 1px solid black;
         }
       }
     }
@@ -239,4 +241,14 @@ textarea::-moz-scrollbar-thumb {
 }
 .builder-submit-button {
   text-align: center;
+}
+.exp-down {
+  display: flex;
+  width: 100%;
+  .exp-down-left {
+    width: 50%;
+  }
+  .exp-down-right {
+    width: 50%;
+  }
 }

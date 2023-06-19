@@ -18,7 +18,7 @@ const Tab1 = () => {
       </div>
       <div className="tab-wrapper">
         <div className="tab-card">
-          <img src={picture1tab1} alt="resume-pic" />
+          <img src={picture2tab1} alt="resume-pic" />
           <div className="tab-text">
             <h3>Easy to read</h3>
             <p>
@@ -30,7 +30,7 @@ const Tab1 = () => {
       </div>
       <div className="tab-wrapper">
         <div className="tab-card">
-          <img src={picture2tab1} alt="resume-pic" />
+          <img src={picture1tab1} alt="resume-pic" />
           <div className="tab-text">
             <h3>A Template Variety to Stand Out</h3>
             <p>
